@@ -5,7 +5,7 @@
 int main ()
 {
 	int age;
-	char childname[14] = "Thomas";
+	char childname[14] = "Carl";
 
 	printf("\n%s have %d kids.\n", FAMILY, KIDS);
 
