@@ -24,7 +24,7 @@ int main()
 
 	printf("\n\nWhy not treat yoursealf to dinner on %d/%d/%d", month, day, year );
 	printf("\nand have %d slices of %s pizza!\n", slices, topping);
-	printf("It will only cost you €.%2f!\n\n\n", cost);
+	printf("It will only cost you €%.2f!\n\n\n", cost);
 
 	return 0;
 
