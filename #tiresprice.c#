@@ -1,0 +1,21 @@
+#include <stdio.h>
+#define SALESTAX .07
+
+int main()
+{
+
+	int numTires;
+	float tirePrice, beforeTax, netSales;
+
+	printf("How many tires did you purchase?");
+	scanf(" %d", &numTires);
+	printf("What was the cost per tire (enter in œôôÌXX.XX format)? ");
+	scanf(" %f", &tirePrice);
+
+
+	beforeTax = tirePrice * numTires;
+	netSales = beforeTax + (beforeTax * SALESTAX);
+
+		return 0;
+	}
+
