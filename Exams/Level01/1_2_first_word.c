@@ -6,34 +6,28 @@
 /*   By: bgoncalv <bgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 17:40:15 by bgoncalv          #+#    #+#             */
-/*   Updated: 2019/08/31 19:29:57 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2019/09/02 14:33:03 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-int		ft_spaces(int i)
-{
-	if (i == '\t' || i == '\n' || i == '\v' || i == '\f' || i == ' ')
-		return(1);
-	return (0);
-}
 
 int		main(int argc, char *argv[])
 {
 	int index;
 
 	index = 0;
-
-	if(argc == 2)
+	if (argc == 2)
 	{
-		while(ft_spaces(argv[1][index]))
-			index ++;
-		while(!(ft_spaces(argv[1][index]))&& argv[1][index])
+		while (argv[1][index] && (argv[1][index] == ' ' || argv[1][index] == '\t'))
+			index++;
+		while (argv[1][index] && (argv[1][index] != ' ' && argv[1][index] != '\t'))
+		{
 			write(1, &argv[1][index++], 1);
+		}
 	}
-	write(1, "\n", 1);
-	return(0);
+	write (1, "\n", 1);
+	return (0);
 }
 
 //Allowed functions: write
