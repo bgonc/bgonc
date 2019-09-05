@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ulstr.c                                            :+:      :+:    :+:   */
+/*   1_0_ulstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgoncalv <bgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 19:34:24 by bgoncalv          #+#    #+#             */
-/*   Updated: 2019/08/31 19:35:05 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:05:01 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 int		main(int argc, char *argv[])
 {
 	int		i;
-	char	letter;
-
+	
 	i = 0;
 	if (argc == 2)
 	{
 		while(argv[1][i])
 		{
-			letter = argv[1][i];
 			if (argv[1][i] >= 'A' && 'Z' >= argv[1][i])
-				letter += 32;
-			if (argv[1][i] >= 'a' && 'z' >= argv[1][i])
-				letter -= 32;
-			write(1, &letter, 1);
-			i += 1;
+				argv[1][i] += 32;
+			else if (argv[1][i] >= 'a' && 'z' >= argv[1][i])
+				argv[1][i] -= 32;
+			write(1, &argv[1][i], 1);
+			i++;
 		}
 	}
 	write(1, "\n", 1);

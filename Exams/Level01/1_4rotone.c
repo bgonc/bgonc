@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
+/*   1_4rotone.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgoncalv <bgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 19:30:36 by bgoncalv          #+#    #+#             */
-/*   Updated: 2019/08/31 19:32:15 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2019/09/05 14:25:45 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int argc, char *argv[])
 				letter += 1;
 			if (argv[1][index] >= 'a' && argv[1][index] <= 'y')
 				letter += 1;
-			if (argv[1][index] == 'z' || argv[1][index] == 'z')
+			if (argv[1][index] == 'z' || argv[1][index] == 'Z')
 				letter -= 25;
 			write(1, &letter, 1);
 			index += 1;

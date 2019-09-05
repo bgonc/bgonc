@@ -1,34 +1,36 @@
 #include <unistd.h>
 
-int main (int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
-	int index = 0;
-	int rep; // counter to count the alpha position in ascii table
-	char c;
+	int index;
+	int rep;
+	index = 0;
+
 	if (argc == 2)
 	{
 		while (argv[1][index])
 		{
-			c = argv[1][index]; 
-			if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) // if it's a alpha
+			if(argv[1][index] >= 'A' && 'Z' >= argv[1][index])
 			{
-				if (c >= 'a' && c <= 'z')
-					rep = c - 'a';
-				if (c >= 'A' && c <= 'Z')
-					rep = c - 'A';
-				while (rep > 0) // when the counter is greater then 0 then write it
-				{
-					write (1, &c, 1);
-					rep--;
-				}
+				rep = argv[1][index] - 63;
+				while(--rep)
+				write(1, &argv[1][index], 1);
 			}
-			write (1, &c, 1); // anyways write each word for one time.
-			index++;
+			else if(argv[1][index] >= 'a' && 'z' >= argv[1][index])
+			{	
+				rep = argv[1][index] - 95;
+				while(--rep)
+				write(1, &argv[1][index], 1);
+			}
+		else
+			write(1, &argv[1][index], 1);
+		index++;
 		}
 	}
-	write (1, "\n", 1);
+	write(1, "\n", 1);
 	return (0);
 }
+
 
 //Allowed functions: write
 //--------------------------------------------------------------------------------

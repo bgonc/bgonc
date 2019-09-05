@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alpha_mirror.c                                     :+:      :+:    :+:   */
+/*   2_1_alpha_mirror.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgoncalv <bgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 19:54:58 by bgoncalv          #+#    #+#             */
-/*   Updated: 2019/09/01 13:29:02 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2019/09/05 16:25:16 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 int		main(int argc, char *argv[])
 {
+	int index;
+	index = 0;
+	
 	if (argc == 2)
 	{
-		while (*argv[1])
+		while (argv[1][index])
 		{
-			if (*argv[1] >= 'a' && *argv[1] <= 'z')
-				*argv[1] = 'a' + 'z' - *argv[1];
-			else if (*argv[1] >= 'A' && *argv[1] <= 'Z')
-				*argv[1] = 'A' + 'Z' - *argv[1];
-			write (1, argv[1]++, 1);
+			if (argv[1][index] >= 'a' && argv[1][index] <= 'z')
+				argv[1][index] = 'a' + 'z' - argv[1][index];
+			else if (argv[1][index] >= 'A' && argv[1][index] <= 'Z')
+				argv[1][index] = 'A' + 'Z' - argv[1][index];
+			write (1, &argv[1][index], 1);
+			index++;
 		}
 	}
 	write (1, "\n", 1);

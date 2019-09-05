@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rot_13.c                                           :+:      :+:    :+:   */
+/*   1_1_rot_13.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgoncalv <bgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 19:10:37 by bgoncalv          #+#    #+#             */
-/*   Updated: 2019/08/31 19:23:34 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2019/09/05 13:33:16 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,17 @@
 int		main(int argc, char *argv[])
 {
 	int index;
-	char up;
-	char down;
-
+	
 	index = 0;
 	if (argc == 2)
 	{
 		while (argv[1][index])
 		{
-			up = argv[1][index] + 13;
-			down = argv[1][index] - 13;
 			if (('A' <= argv[1][index] && 'M' >= argv[1][index]) || ('a' <= argv[1][index] && 'm' >= argv[1][index]))
-				write(1, &up, 1);
+				argv[1][index] += 13;
 			else if (('N' <= argv[1][index] && 'Z' >= argv[1][index]) || ('n' <= argv[1][index] && 'z' >= argv[1][index]))
-				write(1, &down, 1);
-			else
-				write(1, &argv[1][index], 1);
+				argv[1][index] -= 13;
+			write(1, &argv[1][index], 1);
 			index++;
 		}
 	}
