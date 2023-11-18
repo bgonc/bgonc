@@ -1,5 +1,5 @@
 # Ask the user for the filename
-filename = input("Enter the filename you want to create or append to (with extension, e.g., 'data.txt'): ")
+filename = input("Escreve o nome do ficheiro (with extension, e.g., 'data.txt'): ")
 
 # Ask for the user's email
 email = input("Your email: ")
