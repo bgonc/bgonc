@@ -17,11 +17,11 @@ else:
         print("Invalid action. Only 'create' or 'append' are accepted.")
         exit()
 
-    # Open the file with the chosen mode
+        # Open the file with the chosen mode
 with open(filename, file_mode) as file:
         file.write(email + "\n")  # Write the email and add a newline
-    
-    # Read and print the file content if it was created or appended successfully
+
+        # Read and print the file content if it was created or appended successfully
 with open(filename, "r") as file:
         print("File content:")
         content = file.read()
