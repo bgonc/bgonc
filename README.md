@@ -7,7 +7,6 @@ Linux enthusiast, IT student & open source tinkerer based in Helsinki 🇫🇮.
 - ⚙️ I build native Wayland apps, bash scripts, and whatever else the terminal demands
 - 🌐 Website: [bgonc.github.io](https://bgonc.github.io)
 - 📬 Contact: [contact@goncalves.fi](mailto:contact@goncalves.fi)
-- 🏳️ Pronouns: he/him
 
 ---
 
@@ -32,16 +31,11 @@ Source: [github.com/bgonc/provet-report-studio](https://github.com/bgonc/provet-
 
 ---
 
-### 🎓 [C Programming Studies](./C)
-Academic and self-study C code organised by course and topic:
+### 🎓 [C Programming Studies](https://github.com/bgonc/C)
+Academic coursework and self-study exercises in C from university (UAb) and independent practice.
+Covers introductory programming, lab assignments, HackerRank challenges, and early web fundamentals.
 
-| Folder | Contents |
-|---|---|
-| `HackerRank/` | HackerRank challenge solutions |
-| `IntProg/` | Introductory Programming coursework (ATVs, eFolios) |
-| `LabProg/` | Lab Programming exercises (palindrome, Roman numerals…) |
-| `LabWeb/` | Web lab work (HTML & CSS fundamentals) |
-| `Python/` | Early Python experiments |
+→ [github.com/bgonc/C](https://github.com/bgonc/C)
 
 ---
 
