@@ -1,0 +1,65 @@
+# 🎯 Bruno's Emacs Shortcut Cheat Sheet (April 25, 2025)
+
+| Shortcut | Action | Notes |
+|:---------|:-------|:------|
+| `F8` | Open/Close **Treemacs** file explorer | Modern icons with `all-the-icons` |
+| `C-c C-r` | **Compile and Run** the current C file | Runs in `vterm` |
+| `C-c C-o` | **Toggle GitHub Copilot** on/off | Manual enable/disable |
+| `C-c C-c` | Open **Copilot Chat** | Start AI conversations about code |
+| `C-c C-y` | **Yank** last Copilot Chat code block | Insert AI code into file |
+| `C-c M-y` | **Cycle** through older yanked code blocks | Go back in history |
+| `C-c C-M-y` | **Cycle backwards** through Copilot Chat blocks | |
+| `C-x g` | Open **Magit** (Git interface) | Git inside Emacs |
+| `C-x 1` | **Close all other windows**, keep only current one | Fast way to clean up after running |
+| `M-x vterm` | Open **vterm terminal** manually | Full bash/zsh inside Emacs |
+| `M-x compile` | Manually compile (any command) | Good for more complex compile lines |
+| `M-x copilot-chat-add-current-buffer` | Add current buffer as context to Copilot Chat | Use your code for smarter AI replies |
+| `M-x copilot-chat-list` | Manage all buffers added to Copilot Chat | See which files are being sent to Copilot |
+| `M-x copilot-chat-del-current-buffer` | Remove current buffer from Copilot Chat | |
+| `M-x treemacs-delete` | Delete file/folder in Treemacs | (Or use right-click) |
+| `M-x treemacs-rename` | Rename file/folder in Treemacs | |
+
+---
+
+# 🔥 Important Key Combos You Should Remember the Most
+
+| MUST-KNOW | WHAT IT DOES |
+|:----|:----|
+| `C-c C-r` | Save → Compile → Run (in vterm) |
+| `F8` | File tree open/close |
+| `C-c C-c` | Start Copilot Chat |
+| `C-c C-o` | Toggle Copilot auto-suggestions |
+| `C-x g` | Git inside Emacs (Magit) |
+| `C-x 1` | Close extra windows (super useful after compile/run) |
+
+---
+
+# 📋 Little Tips to Remember
+
+- **Treemacs** is your file explorer (delete, rename, create files directly).
+- **vterm** gives you a real terminal inside Emacs.
+- **Copilot** gives suggestions when enabled, and **Copilot Chat** is for full conversations.
+- **Magit** (`C-x g`) gives you perfect Git integration without using the terminal manually.
+- **C-x 1** is your friend to quickly clean all windows and go back to code.
+
+---
+
+# 🎯 Super Final Workflow (Summary)
+
+```text
+Open file → C-c C-r → Compile + Run
+Chat about code → C-c C-c
+Manage project → F8 (Treemacs)
+Push Git → C-x g
+Clean view → C-x 1
+Toggle AI autocomplete → C-c C-o
+```
+
+---
+MAGIT
+
+C-c g - Abre magit
+s - stage
+c c - abre janela de mensagem - C-c C-c - sai da janela
+P - p - push staged
+		

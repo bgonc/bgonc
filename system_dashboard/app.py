@@ -71,6 +71,7 @@ class DashboardWindow(QMainWindow):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
         self.thermal_critical = False
+        self.systemd_mode = "broken"
         self.last_net_io = psutil.net_io_counters() if psutil else None
         self.threads = []
 
@@ -674,6 +675,7 @@ class DashboardWindow(QMainWindow):
         self.run_async("alerts_kernel", self.kernel_cmd)
 
     def set_systemd_filter(self, mode):
+        self.systemd_mode = mode
         self.btn_s_broken.setProperty("class", "ChipActive" if mode == "broken" else "ChipButton")
         self.btn_s_running.setProperty("class", "ChipActive" if mode == "running" else "ChipButton")
         self.btn_s_stopped.setProperty("class", "ChipActive" if mode == "stopped" else "ChipButton")
@@ -683,12 +685,19 @@ class DashboardWindow(QMainWindow):
             btn.style().polish(btn)
             
         if mode == "broken":
-            cmd = "systemctl list-units --state=failed --no-legend --no-pager"
+            sys_cmd = "systemctl list-units --state=failed --no-legend --no-pager"
+            usr_cmd = "systemctl --user list-units --state=failed --no-legend --no-pager"
         elif mode == "running":
-            cmd = "systemctl list-units --type=service --state=running --no-legend --no-pager"
+            sys_cmd = "systemctl list-units --type=service --state=running --no-legend --no-pager"
+            usr_cmd = "systemctl --user list-units --type=service --state=running --no-legend --no-pager"
         else:
-            cmd = "systemctl list-units --type=service --state=exited --no-legend --no-pager"
-            
+            sys_cmd = "systemctl list-units --type=service --state=exited --no-legend --no-pager"
+            usr_cmd = "systemctl --user list-units --type=service --state=exited --no-legend --no-pager"
+
+        cmd = (
+            f'printf "── System ──\n" && {{ {sys_cmd}; }} ; '
+            f'printf "── User ──\n" && {{ {usr_cmd}; }}'
+        )
         self.lbl_systemd_alerts.setText("Refreshing systemd logs...")
         self.run_async("alerts_systemd", cmd)
 
@@ -751,7 +760,7 @@ class DashboardWindow(QMainWindow):
         self.run_async("filen_logs", "journalctl --user -u filen.service -n 5 --no-pager")
         self.run_async("workspaces", "hyprctl clients -j")
         self.run_async("alerts_kernel", self.kernel_cmd)
-        self.run_async("alerts_systemd", "systemctl --failed")
+        self.set_systemd_filter(self.systemd_mode)
         self.run_async("battery", "upower -i $(upower -e | grep BAT | head -n 1) 2>/dev/null")
         self.run_async("disk", "df -h / | awk 'NR==2 {print $4, $2, $5}'")
         self.run_async("sys_serv", "systemctl is-active dbus NetworkManager bluetooth")
@@ -887,8 +896,13 @@ class DashboardWindow(QMainWindow):
                     self.lbl_kernel_alerts.setStyleSheet(f"color: {color}; font-family: 'Fira Code', monospace; font-size: 10pt; padding: 12px;")
 
         elif identifier == "alerts_systemd":
-            if not result or "0 loaded units listed" in result:
-                self.lbl_systemd_alerts.setText("All Services Running.")
+            # Strip header lines to check if there is any actual content
+            meaningful_lines = [
+                l for l in result.splitlines()
+                if l.strip() and not l.startswith("──") and "0 loaded units listed" not in l
+            ]
+            if not result or not meaningful_lines:
+                self.lbl_systemd_alerts.setText("✔ All Services Running.")
                 self.lbl_systemd_alerts.setStyleSheet("color: #10b981; font-family: 'Fira Code', monospace; font-size: 10pt; padding: 12px;")
             else:
                 self.lbl_systemd_alerts.setText(result)

@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.tcc": "c"
+        },
+        "githubPullRequests.experimental.chat": true,
+        "githubPullRequests.experimental.notificationsView": true
+    }
+}

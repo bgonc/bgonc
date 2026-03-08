@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios de CSS</title>
+    <style>
+        /* Fundo do documento */
+        .fundo-laranja {
+            background-color: orange;
+        }
+
+        .h1-amarelo {
+            background-color: yellow;
+        }
+
+        .h2-branco {
+            background-color: white;
+        }
+
+        .p-rosa {
+            background-color: pink;
+        }
+
+        .fundo-branco {
+            background-color: white;
+        }
+
+        .tabela-amarela {
+            background-color: yellow;
+        }
+
+        .fundo-imagem {
+            background-image: url('https://via.placeholder.com/100');
+        }
+
+        .fundo-amarelo {
+            background-color: yellow;
+        }
+
+        .tabela-imagem {
+            background-image: url('https://via.placeholder.com/200');
+        }
+
+        /* Texto */
+        .texto1 {
+            font-size: 20px;
+            color: blue;
+        }
+
+        .texto2 {
+            font-size: 25px;
+            color: red;
+        }
+
+        .texto3 {
+            font-size: 18px;
+            color: green;
+        }
+
+        .texto4 {
+            font-size: 22px;
+            color: purple;
+        }
+
+        .fundo-frase1 {
+            background-color: lightblue;
+            color: black;
+        }
+
+        .fundo-frase2 {
+            background-color: lightgreen;
+            color: black;
+        }
+
+        .fundo-frase3 {
+            background-color: lightpink;
+            color: black;
+        }
+
+        .fundo-amarelo .texto-variado1 {
+            background-color: red;
+            color: white;
+        }
+
+        .fundo-amarelo .texto-variado2 {
+            background-color: blue;
+            color: yellow;
+        }
+
+        .fundo-amarelo .texto-variado3 {
+            background-color: green;
+            color: orange;
+        }
+
+        .fundo-preto {
+            background-color: black;
+            color: white;
+            padding-left: 30px;
+        }
+
+        /* Fontes */
+        .fonte1 {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        .fonte2 {
+            font-family: "Times New Roman", serif;
+            font-size: 20px;
+        }
+
+        .fonte3 {
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+        }
+
+        .decrescente1 {
+            font-size: 24px;
+        }
+
+        .decrescente2 {
+            font-size: 20px;
+        }
+
+        .decrescente3 {
+            font-size: 16px;
+        }
+
+        .decrescente4 {
+            font-size: 12px;
+        }
+
+        .normal {
+            font-style: normal;
+        }
+
+        .italico {
+            font-style: italic;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .formatacao {
+            font-size: 22px;
+            color: blue;
+            text-decoration: underline;
+            font-family: "Verdana", sans-serif;
+        }
+
+        /* Borders */
+        .border1 {
+            border: 20px solid black;
+            padding: 10px;
+        }
+
+        .border2 {
+            border: 15px solid blue;
+            padding: 10px;
+        }
+
+        .border3 {
+            text-align: center;
+        }
+
+        .border3-1,
+        .border3-2 {
+            border: 10px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fundo-laranja">
+        <h1 class="h1-amarelo">Cabeçalho 1</h1>
+        <h2 class="h2-branco">Cabeçalho 2</h2>
+        <p class="p-rosa">Este parágrafo tem fundo rosa.</p>
+    </div>
+
+    <div class="fundo-branco">
+        <h2>Tabela com fundo amarelo</h2>
+        <table class="tabela-amarela" border="1">
+            <tr>
+                <td>Conteúdo</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="fundo-imagem">
+        <h2>Padrão de fundo com imagem</h2>
+    </div>
+
+    <div class="fundo-amarelo">
+        <h2>Tabela com fundo de imagem</h2>
+        <table class="tabela-imagem" border="1">
+            <tr>
+                <td>Conteúdo</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="fundo-branco">
+        <h2>Texto com tamanhos e cores diferentes</h2>
+        <p class="texto1">Texto 1</p>
+        <p class="texto2">Texto 2</p>
+        <p class="texto3">Texto 3</p>
+        <p class="texto4">Texto 4</p>
+    </div>
+
+    <div class="fundo-branco">
+        <h2>Frases com fundo diferente e texto igual</h2>
+        <p class="fundo-frase1">Frase 1</p>
+        <p class="fundo-frase2">Frase 2</p>
+        <p class="fundo-frase3">Frase 3</p>
+    </div>
+
+    <div class="fundo-amarelo">
+        <h2>Frases com fundo e texto variado</h2>
+        <p class="texto-variado1">Frase 1</p>
+        <p class="texto-variado2">Frase 2</p>
+        <p class="texto-variado3">Frase 3</p>
+    </div>
+
+    <div class="fundo-preto">
+        <h2>Texto indentado</h2>
+        <p>Este texto está a 30px da esquerda.</p>
+    </div>
+
+    <div>
+        <h2>Fontes diferentes</h2>
+        <p class="fonte1">Texto com Arial.</p>
+        <p class="fonte2">Texto com Times New Roman.</p>
+        <p class="fonte3">Texto com Courier New.</p>
+    </div>
+
+    <div>
+        <h2>Texto decrescente</h2>
+        <p class="decrescente1">Grande</p>
+        <p class="decrescente2">Médio</p>
+        <p class="decrescente3">Pequeno</p>
+        <p class="decrescente4">Muito pequeno</p>
+    </div>
+
+    <div>
+        <h2>Texto normal, itálico e negrito</h2>
+        <p class="normal">Texto normal.</p>
+        <p class="italico">Texto em itálico.</p>
+        <p class="negrito">Texto em negrito.</p>
+    </div>
+
+    <div>
+        <h2>Texto com descrição do estilo aplicado</h2>
+        <p class="formatacao">Este texto tem cor azul, tamanho 22px, fonte Verdana e está sublinhado.</p>
+    </div>
+
+    <div>
+        <h2>Border de 20px</h2>
+        <p class="border1">Frase com borda preta de 20px.</p>
+    </div>
+
+    <div>
+        <h2>Border azul de 15px</h2>
+        <p class="border2">Frase com borda azul de 15px.</p>
+    </div>
+
+    <div class="border3">
+        <h2>Texto centrado e com border</h2>
+        <p>Frase 1</p>
+        <p class="border3-1">Frase 2</p>
+        <p class="border3-2">Frase 3</p>
+    </div>
+
+</body>
+
+</html>
