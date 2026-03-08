@@ -41,3 +41,6 @@ You can launch the dashboard directly using the provided shell script:
 ```
 
 **Note:** The application uses `QT_QPA_PLATFORM=wayland` inside the shell script to force crisp native Wayland rendering on Hyprland.
+
+<img width="1920" height="1050" alt="image" src="https://github.com/user-attachments/assets/60aac144-2dbf-4a49-a73d-7e8ac9c22453" />
+
