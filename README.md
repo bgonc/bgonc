@@ -12,9 +12,11 @@ Linux enthusiast, IT student & open source tinkerer based in Helsinki 🇫🇮.
 
 ## Projects
 
-### 🖥️ [System Dashboard](./system_dashboard)
+### 🖥️ [System Dashboard](https://github.com/bgonc/system-dashboard)
 A lightweight, always-on-top **PyQt6 desktop dashboard** for Arch Linux / Wayland.  
 Displays live CPU, RAM, network I/O, battery, disk usage, Filen cloud sync status, systemd service health (system **and** user scope), kernel alerts, and pending package updates — all in a dark glassmorphism UI.
+
+→ [github.com/bgonc/system-dashboard](https://github.com/bgonc/system-dashboard)
 
 **Stack:** Python · PyQt6 · systemd · journalctl · psutil
 
