@@ -66,7 +66,7 @@ class DashboardWindow(QMainWindow):
         super().__init__()
         self.kernel_cmd = "journalctl -k -p 3 -n 5 --no-pager"
         
-        self.setWindowTitle("Antigravity Dashboard")
+        self.setWindowTitle("System Dashboard")
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
@@ -936,7 +936,7 @@ class DashboardWindow(QMainWindow):
                 self.lbl_net_sockets.setText("Idle")
 
 if __name__ == "__main__":
-    QApplication.setApplicationName("antigravity-dash")
+    QApplication.setApplicationName("system-dashboard")
     QApplication.setDesktopFileName("")
     app = QApplication(sys.argv)
     window = DashboardWindow()

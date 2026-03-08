@@ -1,6 +1,6 @@
-# AntiGravity System Monitor (Native Wayland)
+# Native Wayland System Monitor
 
-![AntiGravity Dashboard](screenshot.jpg)
+![System Dashboard](screenshot.jpg)
 
 A lightweight, Python-based (Qt) native system dashboard optimized for Hyprland. 
 
@@ -18,7 +18,7 @@ This native Wayland application provides a sleek, Bento Box-style masonry layout
 1. Clone or download the repository into your preferred folder:
    ```bash
    git clone https://github.com/bgonc/bgonc.git
-   cd bgonc/antigravity_dash
+   cd bgonc/system_dashboard
    ```
 
 2. Create a Python virtual environment and activate it:
