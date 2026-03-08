@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arch Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #020617; /* Deep navy */
+            --card-bg: rgba(255, 255, 255, 0.03); /* Semi-transparent glass */
+            --header-bg: rgba(2, 6, 23, 0.85); /* Deep navy glass */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --border-color: rgba(255, 255, 255, 0.08); /* 1px border */
+            --radius-card: 16px;
+            --radius-pill: 0;
+            --btn-bg: rgba(255,255,255,0.05);
+            --btn-hover: rgba(255,255,255,0.1);
+            --term-bg: rgba(0,0,0,0.3);
+        }
+
+        /* Dark Theme Only */
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 0%, rgba(59,130,246,0.05) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        * { box-sizing: border-box; }
+
+        /* FULL WIDTH RIBBON */
+        .island-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        
+        .top-pill {
+            width: 100%;
+            background: var(--header-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .title-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .title-block .user-av {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+        }
+
+        .title-block span {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .ribbon-stats {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            padding-left: 1.5rem;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-item:first-child { border-left: none; padding-left: 0; }
+        
+        .stat-value {
+            color: var(--text-main);
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+        }
+        
+        /* SPARKLINE */
+        .sparkline-container {
+            display: flex;
+            align-items: flex-end;
+            height: 16px;
+            gap: 2px;
+            margin-right: 0.5rem;
+        }
+        .spark-bar {
+            width: 3px;
+            background: var(--accent-blue);
+            border-radius: 1px;
+            transition: height 0.3s ease;
+        }
+
+        /* BENTO GRID */
+        .workspace {
+            padding: 1rem 2rem 4rem 2rem;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* GRID RESPONSIVENESS */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .bento-grid { display: flex; flex-direction: column; }
+            .card { min-height: 150px; }
+            .top-pill {
+                 flex-direction: column;
+                 gap: 1rem;
+                 padding: 1rem;
+                 border-radius: 18px;
+            }
+            .ribbon-stats { flex-wrap: wrap; justify-content: center; }
+            .stat-item { border-left: none; padding-left: 0; }
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 15px rgba(255,255,255,0.03);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s, border-color 0.5s;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 0 25px rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+        }
+        /* TOP-ROW HEIGHT FIX */
+        .top-row-card {
+            min-height: 300px;
+        }
+
+        .full-width { grid-column: 1 / -1; margin-top: 0; }
+        
+        /* FILEN SYNC GLOW */
+        .sync-active-glow {
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .clickable-header { cursor: pointer; user-select: none; }
+
+        .card-body {
+            padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .collapsed .card-body { display: none; }
+        
+        .toggle-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+            background: var(--btn-bg);
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .collapsed .toggle-icon { transform: rotate(-90deg); }
+
+        /* ICONS & DOTS */
+        .icon { width: 1.2rem; height: 1.2rem; fill: currentColor; }
+        .flex-row { display: flex; align-items: center; gap: 0.5rem; }
+
+        .status-dot {
+            width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+        }
+        .dot-green { background: #00ff00; box-shadow: 0 0 10px #00ff00; }
+        .dot-red { background: #ff3333; box-shadow: 0 0 10px #ff3333; }
+
+        /* BUTTONS */
+        .btn-group { display: flex; gap: 1rem; }
+        .btn {
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+            flex: 1;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--btn-bg);
+        }
+        .btn-restart { 
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa; 
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .btn-restart:hover { background: rgba(59, 130, 246, 0.25); transform: translateY(-2px); }
+        .btn-stop { 
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171; 
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        .btn-stop:hover { background: rgba(239, 68, 68, 0.25); transform: translateY(-2px); }
+
+        /* PROGRESS */
+        .progress-bg {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden;
+        }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 0%; box-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+        
+        .text-dim { color: var(--text-muted); font-size: 0.8rem; }
+
+        /* TERMINALS */
+        .term {
+            background: var(--term-bg); border: 1px solid var(--border-color);
+            padding: 1rem; border-radius: 12px; font-family: 'Fira Code', monospace;
+            font-size: 0.75rem; overflow-y: auto; max-height: 250px; white-space: pre-wrap;
+            color: #a78bfa; margin: 0;
+            /* Thin scrollbars */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.1) transparent;
+        }
+        .term::-webkit-scrollbar { width: 6px; }
+        .term::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        .service-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+        .service-list li {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0.75rem; background: var(--btn-bg);
+            border-radius: 8px; border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+        
+        .alert-badge {
+            background: var(--accent-red); color: white; padding: 0.1rem 0.6rem;
+            border-radius: 99px; font-size: 0.75rem; font-weight: bold;
+        }
+        .alert-badge.healthy { background: var(--accent-green); }
+
+        /* HEADER NETWORK SPARKLINE */
+        .net-sparkline-container {
+            display: flex;
+            align-items: flex-end;
+            height: 16px;
+            gap: 1.5px;
+            margin-right: 0.5rem;
+            width: 30px;
+        }
+        .net-spark-bar {
+            width: 2px;
+            background: var(--accent-purple);
+            border-radius: 1px;
+            transition: height 0.3s ease;
+        }
+        
+        /* Removed theme-toggle */
+
+        .toggle-logs-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-blue);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+        }
+        .toggle-logs-btn:hover { text-decoration: underline; }
+        
+        .clickable-card { cursor: pointer; }
+
+        .alert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.75rem;
+            background: var(--btn-bg);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border-color);
+            gap: 1rem;
+        }
+        .alert-item:last-child { margin-bottom: 0; }
+        
+        .alert-text {
+            word-wrap: break-word;
+            flex-grow: 1;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: #fca5a5;
+        }
+
+        .mute-btn {
+            background: var(--btn-bg);
+            border: none;
+            color: var(--text-muted);
+            border-radius: 6px;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .mute-btn:hover {
+            background: var(--btn-hover);
+            color: var(--text-main);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING DYNAMIC ISLAND -->
+    <div class="island-container">
+        <header class="top-pill">
+            <div class="title-block">
+                <div class="user-av" id="user-av">?</div>
+                <span id="user-info">Loading...</span>
+            </div>
+            
+            <div class="ribbon-stats">
+                <!-- CPU Sparkline -->
+                <div class="stat-item" title="CPU Usage">
+                    <div class="sparkline-container" id="cpu-sparkline">
+                        <div class="spark-bar" style="height: 20%"></div>
+                        <div class="spark-bar" style="height: 40%"></div>
+                    </div>
+                    <span class="stat-value" id="hdr-cpu">0%</span>
+                </div>
+                
+                <!-- HW Temp inside Island -->
+                <div class="stat-item" title="Package Temp">
+                    <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--accent-red);"><path d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4zm-4-8c0-.55.45-1 1-1s1 .45 1 1v4h-2V5z"/></svg>
+                    <span class="stat-value" id="hw-temp">N/A</span>
+                </div>
+                
+                <!-- RAM -->
+                <div class="stat-item" title="RAM Usage">
+                    <span class="stat-value" id="hdr-ram">0GB</span>
+                </div>
+                
+                <!-- Network Sparkline -->
+                <div class="stat-item" title="Network Throughput">
+                    <div class="net-sparkline-container" id="net-sparkline">
+                        <!-- Net bars injected here -->
+                    </div>
+                    <span style="color: var(--accent-green);">↓<span class="stat-value" id="hdr-net-down" style="color:var(--text-main);">0</span></span>
+                    <span style="color: var(--accent-blue); margin-left:4px;">↑<span class="stat-value" id="hdr-net-up" style="color:var(--text-main);">0</span></span>
+                </div>
+                
+                <!-- Power inside Island -->
+                <div class="stat-item" title="Power / Battery">
+                    <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--accent-green);"><path d="M16 4h-2V2h-4v2H8c-.55 0-1 .45-1 1v16c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zm-1 10h-2v2h-2v-2H9v-2h2V8h2v2h2v2z"/></svg>
+                    <span class="stat-value" id="hdr-bat-pct" style="color:var(--accent-green);">AC</span>
+                    <span class="stat-value" id="hdr-bat-rate" style="margin-left:4px; color:var(--accent-orange); font-size: 0.75rem;"></span>
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Mode" id="theme-btn">
+                    <svg viewBox="0 0 24 24" id="theme-icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg viewBox="0 0 24 24" id="theme-icon-sun" style="display: none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <div class="workspace">
+        <div class="bento-grid">
+
+            <!-- ROW 1, COL 1: SYSTEM UPDATES -->
+            <div class="card clickable-card top-row-card" onclick="triggerAction('update', 'system')" title="Click to launch Terminal and run yay -Syu">
+                <div class="card-header" style="pointer-events: none;">System Updates</div>
+                <div class="card-body" style="padding: 2rem 1.25rem; justify-content: center; gap: 2rem;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-top: 1rem;">
+                        <span class="text-dim" style="font-size: 1.1rem;">Pacman:</span>
+                        <span id="update-pacman" style="color: var(--accent-orange); font-weight: bold; font-family: monospace; font-size: 1.5rem;">0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="text-dim" style="font-size: 1.1rem;">AUR (yay):</span>
+                        <span id="update-aur" style="color: var(--accent-blue); font-weight: bold; font-family: monospace; font-size: 1.5rem;">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 1, COL 2: BATTERY / POWER -->
+            <div class="card top-row-card">
+                <div class="card-header">Power / Battery</div>
+                <div class="card-body" style="text-align: center; justify-content: center; padding: 2rem;">
+                    <div id="bat-pct" style="font-size: 3.5rem; font-weight: 700; color: var(--accent-green); line-height: 1;">AC</div>
+                    <div id="bat-state" class="text-dim" style="margin-top: 1rem; font-size: 1.1rem;">Desktop Mode</div>
+                    <div id="bat-rate" style="margin-top: auto; font-family: 'Fira Code', monospace; color: var(--accent-orange); font-size: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">0.0 W</div>
+                </div>
+            </div>
+
+            <!-- ROW 1, COL 3: KERNEL ALERTS -->
+            <div class="card top-row-card" id="card-alerts">
+                <div class="card-header">
+                    <div class="flex-row">
+                        <span>Kernel Alerts</span>
+                        <span id="alert-badge" class="alert-badge healthy">0</span>
+                    </div>
+                </div>
+                <div class="card-body" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                    <div id="alerts-box" class="term" style="border: none; border-radius: 0; background: transparent; flex-grow: 1; padding: 1.25rem; height: 100%;">System Healthy</div>
+                </div>
+            </div>
+
+            <!-- ROW 2, COL 1: CORE SERVICES -->
+            <div class="card top-row-card">
+                <div class="card-header">Core Services</div>
+                <div class="card-body" style="padding: 0 1.25rem 1.25rem 1.25rem;">
+                    <ul class="service-list" style="margin-top: 1.25rem;">
+                        <li><span style="font-weight: 500;">dbus</span> <span id="srv-dbus" class="status-dot dot-red"></span></li>
+                        <li><span style="font-weight: 500;">NetworkManager</span> <span id="srv-NetworkManager" class="status-dot dot-red"></span></li>
+                        <li><span style="font-weight: 500;">bluetooth</span> <span id="srv-bluetooth" class="status-dot dot-red"></span></li>
+                    </ul>
+                    <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                        <div class="text-dim" style="display: flex; justify-content: space-between;">
+                            <span>Root (/) Free</span><span id="disk-text" style="color: var(--text-main); font-weight: 600;">...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2, COL 2: HARDWARE TEMPS -->
+            <div class="card top-row-card">
+                <div class="card-header">Hardware Temps</div>
+                <div class="card-body" style="text-align: center; justify-content: center; padding: 2rem;">
+                    <div id="hw-temp-card" style="font-size: 3.5rem; font-weight: 700; color: var(--accent-red);">N/A</div>
+                    <div class="text-dim" style="margin-top: 1rem; font-size: 1.1rem;">CPU Package Temperature</div>
+                </div>
+            </div>
+
+            <!-- ROW 2, COL 3: ACTIVE NETWORK -->
+            <div class="card top-row-card">
+                <div class="card-header">Active Net Sockets</div>
+                <div class="card-body" style="padding: 0 1.25rem 1.25rem 1.25rem; overflow-y: auto;">
+                    <ul class="service-list" id="net-procs-list" style="margin-top: 1.25rem;">
+                        <li class="text-dim" style="justify-content: center; border: none; margin-top: 2rem;">Fetching...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ROW 3: FILEN MANAGER (FULL WIDTH, PROMINENT BUTTONS) -->
+            <div class="card full-width" id="card-filen">
+                <div class="card-header clickable-header" onclick="toggleCard('card-filen')">
+                    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                        <div class="flex-row" style="gap: 1.5rem;">
+                            <span>Filen Cloud Sync</span>
+                            <div class="flex-row">
+                                <span id="filen-dot" class="status-dot dot-red"></span>
+                                <span id="filen-status-text" class="text-dim">Checking</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Compact Quota preview always visible -->
+                        <div style="width: 150px; margin-right: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <div class="progress-bg" style="flex:1;">
+                                <div id="hdr-quota-bar" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                        
+                        <div>
+                            <div class="text-dim" style="margin-bottom: 0.5rem;">Storage Quota</div>
+                            <div class="progress-bg" style="height: 8px; margin-bottom: 0.5rem;"><div id="quota-progress" class="progress-fill"></div></div>
+                            <div id="quota-text" class="text-dim" style="margin-bottom: 2rem;">Loading...</div>
+
+                            <div class="btn-group">
+                                <button class="btn btn-restart" onclick="controlService('restart')" id="btn-restart">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Restart Sync
+                                </button>
+                                <button class="btn btn-stop" onclick="controlService('stop')" id="btn-stop">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg> Stop Sync
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-dim" style="margin-bottom: 0.5rem;">Sync Pairs</div>
+                            <div id="sync-box" class="term" style="height: 120px;">Fetching...</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <div class="text-dim">Raw Status</div>
+                            <button class="toggle-logs-btn" onclick="document.getElementById('logs-box').style.display = document.getElementById('logs-box').style.display === 'none' ? 'block' : 'none'">Toggle Output</button>
+                        </div>
+                        <div id="logs-box" class="term" style="height: 120px; color: var(--text-muted); display: none;">Fetching...</div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end Grid -->
+    </div> <!-- end workspace -->
+
+    <script>
+        function toggleCard(cardId) {
+            document.getElementById(cardId).classList.toggle('collapsed');
+        }
+
+        async function controlService(action) {
+            const btnR = document.getElementById('btn-restart');
+            const btnS = document.getElementById('btn-stop');
+            btnR.disabled = true; btnS.disabled = true;
+            try {
+                await fetch(`/api/service/${action}`, { method: 'POST' });
+                await fetchStatus();
+            } catch (err) { alert(`Failed to ${action} filen service.`); }
+            finally { btnR.disabled = false; btnS.disabled = false; }
+        }
+
+        async function triggerAction(module, action) {
+            try {
+                await fetch(`/api/action/${module}/${action}`, { method: 'POST' });
+                setTimeout(fetchStatus, 500); // Slight delay then fetch
+            } catch (err) { console.error(err); }
+        }
+
+        let netBuffer = new Array(30).fill(0);
+        
+        // Theme logic
+        function toggleTheme() {
+            document.documentElement.classList.toggle('light-mode');
+            const isLight = document.documentElement.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            document.getElementById('theme-icon-moon').style.display = isLight ? 'none' : 'block';
+            document.getElementById('theme-icon-sun').style.display = isLight ? 'block' : 'none';
+        }
+
+        // Initialize Theme from localStorage
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+            document.getElementById('theme-icon-moon').style.display = 'none';
+            document.getElementById('theme-icon-sun').style.display = 'block';
+        }
+        
+        let mutedErrors = new Set(); // Stores strings of muted errors
+
+        function muteError(errorText) {
+            mutedErrors.add(errorText);
+            fetchStatus(); // Re-render immediately
+        }
+        
+        function updateSparkline(cpuArray) {
+            const container = document.getElementById('cpu-sparkline');
+            container.innerHTML = '';
+            cpuArray.forEach(pct => {
+                const el = document.createElement('div');
+                el.className = 'spark-bar';
+                el.style.height = `${Math.max(10, pct)}%`; // Min height
+                if(pct > 80) el.style.background = 'var(--accent-red)';
+                else if(pct > 50) el.style.background = 'var(--accent-orange)';
+                container.appendChild(el);
+            });
+        }
+
+        function updateNetSparkline(value) {
+            netBuffer.push(value);
+            netBuffer.shift();
+            
+            const maxVal = Math.max(...netBuffer, 10); // Minimum scale of 10 KB/s
+            const container = document.getElementById('net-sparkline');
+            container.innerHTML = '';
+            
+            netBuffer.forEach(val => {
+                const pct = (val / maxVal) * 100;
+                const el = document.createElement('div');
+                el.className = 'net-spark-bar';
+                el.style.height = `${Math.max(5, pct)}%`; 
+                container.appendChild(el);
+            });
+        }
+
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                
+                // HEADER STATS
+                if(data.health) {
+                    const avgCpu = Math.round(data.health.cpu.reduce((a,b)=>a+b,0) / data.health.cpu.length);
+                    document.getElementById('hdr-cpu').textContent = avgCpu + '%';
+                    updateSparkline(data.health.cpu);
+                    
+                    document.getElementById('hdr-ram').textContent = `${data.health.ram_used_gb}/${data.health.ram_total_gb}GB`;
+                    document.getElementById('hdr-net-down').textContent = data.health.net_down_kbs;
+                    document.getElementById('hdr-net-up').textContent = data.health.net_up_kbs;
+                    
+                    // Use total throughput for sparkline
+                    updateNetSparkline(data.health.net_down_kbs + data.health.net_up_kbs);
+                    
+                    document.getElementById('disk-text').textContent = data.health.disk_avail;
+                }
+                // USER INFO (In pill)
+                if(data.user) {
+                    document.getElementById('user-info').textContent = data.user.split('@')[0]; // Simplify name
+                    document.getElementById('user-av').textContent = data.user.charAt(0).toUpperCase();
+                }
+
+                // SYSTEM UPDATES
+                if(data.updates) {
+                    document.getElementById('update-pacman').textContent = data.updates.pacman;
+                    document.getElementById('update-aur').textContent = data.updates.aur;
+                }
+
+                // BATTERY (Card)
+                if(data.battery && data.battery.has_battery) {
+                    document.getElementById('bat-pct').textContent = data.battery.percentage;
+                    document.getElementById('bat-state').textContent = data.battery.state;
+                    document.getElementById('bat-rate').textContent = data.battery.energy_rate;
+                } else {
+                    document.getElementById('bat-pct').textContent = "AC";
+                    document.getElementById('bat-state').textContent = "Desktop Mode";
+                    document.getElementById('bat-rate').textContent = "0.0 W";
+                }
+
+                // SERVICES
+                if(data.critical_services) {
+                    for (const [srv, active] of Object.entries(data.critical_services)) {
+                        const el = document.getElementById(`srv-${srv}`);
+                        if(el) el.className = active ? 'status-dot dot-green' : 'status-dot dot-red';
+                    }
+                }
+
+                // HYPRLAND (Removed from UI per 3-col reqs, skipped in JS)
+
+                // ALERTS
+                const alertsBox = document.getElementById('alerts-box');
+                const badge = document.getElementById('alert-badge');
+                
+                if(data.alerts && Array.isArray(data.alerts) && data.alerts.length > 0) {
+                    
+                    // Filter out muted items
+                    const visibleAlerts = data.alerts.filter(log => {
+                        for(let mutedTerm of mutedErrors) {
+                            if(log.includes(mutedTerm)) return false;
+                        }
+                        return true;
+                    });
+                    
+                    if(visibleAlerts.length > 0) {
+                        badge.textContent = visibleAlerts.length;
+                        badge.className = 'alert-badge';
+                        alertsBox.innerHTML = ''; // Clear
+                        
+                        visibleAlerts.forEach(log => {
+                            const row = document.createElement('div');
+                            row.className = 'alert-item';
+                            
+                            const textSpan = document.createElement('span');
+                            textSpan.className = 'alert-text';
+                            textSpan.textContent = log;
+                            
+                            const btn = document.createElement('button');
+                            btn.className = 'mute-btn';
+                            btn.textContent = 'Mute';
+                            const mutePayload = log.length > 50 ? log.substring(40, 80) : log;
+                            btn.onclick = () => muteError(mutePayload);
+                            
+                            row.appendChild(textSpan);
+                            row.appendChild(btn);
+                            alertsBox.appendChild(row);
+                        });
+                    } else {
+                        badge.textContent = "0";
+                        badge.className = 'alert-badge healthy';
+                        alertsBox.innerHTML = '<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--accent-green);"><svg class="icon" viewBox="0 0 24 24" style="width: 3rem; height: 3rem; margin-bottom: 1rem;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div style="font-size: 1.1rem; font-weight: 500;">All Alerts Muted</div></div>';
+                    }
+
+                } else {
+                    badge.textContent = "0";
+                    badge.className = 'alert-badge healthy';
+                    alertsBox.innerHTML = '<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--accent-green);"><svg class="icon" viewBox="0 0 24 24" style="width: 3rem; height: 3rem; margin-bottom: 1rem;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><div style="font-size: 1.1rem; font-weight: 500;">System Healthy</div></div>';
+                }
+
+                // FILEN
+                const filenDot = document.getElementById('filen-dot');
+                const filenCard = document.getElementById('card-filen');
+                if(data.service.is_active) {
+                    filenDot.className = 'status-dot dot-green';
+                    document.getElementById('filen-status-text').textContent = "Active";
+                    // Add borders glow if actively doing a fast transfer/checking
+                    if (data.sync && !data.sync.includes("No sync pairs configured") && data.quota.percent > 0) {
+                         filenCard.classList.add('sync-active-glow');
+                    } else {
+                         filenCard.classList.remove('sync-active-glow');
+                    }
+                } else {
+                    filenDot.className = 'status-dot dot-red';
+                    document.getElementById('filen-status-text').textContent = "Failed/Stopped";
+                    filenCard.classList.remove('sync-active-glow');
+                }
+                
+                // NEW HW AND NET
+                if(data.hw_temp) document.getElementById('hw-temp-card').textContent = data.hw_temp;
+                
+                const procsList = document.getElementById('net-procs-list');
+                if(data.net_procs && data.net_procs.length > 0) {
+                    procsList.innerHTML = '';
+                    data.net_procs.forEach((p, idx) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<span style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--text-muted);font-size:0.75rem;">${idx+1}</span> <span style="font-family: monospace; color: var(--text-main); font-weight:600;">${p.name.substring(0,12)}</span></span> <span class="text-dim" style="background:var(--btn-bg);padding:0.1rem 0.4rem;border-radius:4px;">${p.count}</span>`;
+                        procsList.appendChild(li);
+                    });
+                } else {
+                     procsList.innerHTML = '<li class="text-dim" style="justify-content: center; border: none; margin-top: 2rem;">Idle</li>';
+                }
+
+                document.getElementById('hdr-quota-bar').style.width = `${data.quota.percent}%`;
+                document.getElementById('quota-progress').style.width = `${data.quota.percent}%`;
+                document.getElementById('quota-text').textContent = data.quota.text;
+                
+                document.getElementById('sync-box').textContent = data.sync;
+                document.getElementById('logs-box').textContent = data.logs;
+
+            } catch (err) { console.error(err); }
+        }
+
+        fetchStatus();
+        setInterval(fetchStatus, 5000); // 5s poll for better reactive sparklines
+    </script>
+</body>
+</html>
