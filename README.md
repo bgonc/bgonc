@@ -1,20 +1,24 @@
 # Hi there 👋 I'm Bruno
 
-Linux enthusiast, IT student & open source tinkerer based in Helsinki 🇫🇮.
+IT student and Linux hobbyist based in Helsinki 🇫🇮.  
+I learn by building things — most of what's here is me figuring stuff out as I go.
 
-- 🔭 Currently working on **system monitoring tools** and **home lab automation**
-- 🌱 Studying **Linux system administration** (RHCSA track) and sharpening my C & Python skills
-- ⚙️ I build native Wayland apps, bash scripts, and whatever else the terminal demands
+- 🌱 Studying IT at [UAb](https://www.uab.pt) and working through Linux system administration (RHCSA track)
+- 🔨 I tinker with Python scripts, bash, and C as part of my coursework and self-study
+- 🐧 Daily Arch Linux / Hyprland user — most of my projects come from solving problems on my own setup
 - 🌐 Website: [bgonc.github.io](https://bgonc.github.io)
-- 📬 Contact: [contact@goncalves.fi](mailto:contact@goncalves.fi)
+- 📬 Contact: [bgonc.github.io](https://bgonc.github.io) (contact form on the site)
 
 ---
 
 ## Projects
 
 ### 🖥️ [System Dashboard](https://github.com/bgonc/system-dashboard)
-A lightweight, always-on-top **PyQt6 desktop dashboard** for Arch Linux / Wayland.  
-Displays live CPU, RAM, network I/O, battery, disk usage, Filen cloud sync status, systemd service health (system **and** user scope), kernel alerts, and pending package updates — all in a dark glassmorphism UI.
+
+A PyQt6 desktop dashboard that monitors my Arch Linux system in real time.  
+Shows CPU, RAM, network I/O, battery, systemd service health (system and user scope), kernel alerts, Filen cloud sync status, and pending package updates — in a dark glassmorphism UI.
+
+Built to scratch a personal itch: I wanted a single-glance panel for my Hyprland setup without running a browser or Electron app.
 
 → [github.com/bgonc/system-dashboard](https://github.com/bgonc/system-dashboard)
 
@@ -23,8 +27,9 @@ Displays live CPU, RAM, network I/O, battery, disk usage, Filen cloud sync statu
 ---
 
 ### 📊 [Provet Report Studio](https://bgonc.github.io/provet-report-studio)
-A browser-based tool built out of a real need: **helping veterinary clinic staff manipulate and process Excel reports** exported from the Provet clinic management system.  
-Customers were spending hours reformatting data by hand — this tool automates the most common operations so anyone on the team can do it in seconds, with no Excel expertise required.
+
+A browser-based tool for processing Excel and CSV exports from the Provet clinic management system.  
+Built to help a veterinary clinic avoid hours of manual data reformatting — joins, pivots, filters, and summaries all run client-side in the browser, no server involved.
 
 Live at 👉 **[bgonc.github.io/provet-report-studio](https://bgonc.github.io/provet-report-studio)**  
 Source: [github.com/bgonc/provet-report-studio](https://github.com/bgonc/provet-report-studio)
@@ -33,15 +38,28 @@ Source: [github.com/bgonc/provet-report-studio](https://github.com/bgonc/provet-
 
 ---
 
+### 🌐 [Portfolio Website](https://bgonc.github.io)
+
+Personal site built with React, TypeScript, and Vite. Has a project page and a small blog section.  
+Deployed via GitHub Pages.
+
+→ [bgonc.github.io](https://bgonc.github.io)
+
+**Stack:** React · TypeScript · Vite
+
+---
+
 ### 🎓 [C Programming Studies](https://github.com/bgonc/C)
-Academic coursework and self-study exercises in C from university (UAb) and independent practice.
-Covers introductory programming, lab assignments, HackerRank challenges, and early web fundamentals.
+
+Coursework and exercises from my IT studies at UAb, plus some independent practice.  
+Covers the basics: control flow, functions, arrays, pointers, file I/O, sorting, and structs.  
+Nothing fancy — just working through the fundamentals.
 
 → [github.com/bgonc/C](https://github.com/bgonc/C)
 
 ---
 
-## Tools & Tech
+## Tools & Tech I use day to day
 
 ![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Arch](https://img.shields.io/badge/-Arch%20Linux-1793D1?style=flat&logo=arch-linux&logoColor=white)
@@ -50,4 +68,5 @@ Covers introductory programming, lab assignments, HackerRank challenges, and ear
 ![Bash](https://img.shields.io/badge/-Bash-4EAA25?style=flat&logo=gnu-bash&logoColor=white)
 ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)
