@@ -6,56 +6,56 @@ I learn by building things — most of what's here is me figuring stuff out as I
 - 🌱 Studying IT at [UAb](https://www.uab.pt) and working through Linux system administration (RHCSA track)
 - 🔨 I tinker with Python scripts, bash, and C as part of my coursework and self-study
 - 🐧 Daily Arch Linux / Hyprland user — most of my projects come from solving problems on my own setup
-- 🌐 Website: [bgonc.github.io](https://bgonc.github.io)
-- 📬 Contact: [bgonc.github.io](https://bgonc.github.io) (contact form on the site)
+- 🌐 Website: [bgonc.codeberg.page](https://bgonc.codeberg.page)
+- 📬 Contact: [bgonc.codeberg.page](https://bgonc.codeberg.page) (contact form on the site)
 
 ---
 
 ## Projects
 
-### 🖥️ [System Dashboard](https://github.com/bgonc/system-dashboard)
+### 🖥️ [System Dashboard](https://codeberg.org/bgonc/system-dashboard)
 
 A PyQt6 desktop dashboard that monitors my Arch Linux system in real time.  
 Shows CPU, RAM, network I/O, battery, systemd service health (system and user scope), kernel alerts, Filen cloud sync status, and pending package updates — in a dark glassmorphism UI.
 
 Built to scratch a personal itch: I wanted a single-glance panel for my Hyprland setup without running a browser or Electron app.
 
-→ [github.com/bgonc/system-dashboard](https://github.com/bgonc/system-dashboard)
+→ [github.com/bgonc/system-dashboard](https://codeberg.org/bgonc/system-dashboard)
 
 **Stack:** Python · PyQt6 · systemd · journalctl · psutil
 
 ---
 
-### 📊 [Provet Report Studio](https://bgonc.github.io/provet-report-studio)
+### 📊 [Provet Report Studio](https://bgonc.codeberg.page/provet-report-studio)
 
 A browser-based tool for processing Excel and CSV exports from the Provet clinic management system.  
 Built to help a veterinary clinic avoid hours of manual data reformatting — joins, pivots, filters, and summaries all run client-side in the browser, no server involved.
 
-Live at 👉 **[bgonc.github.io/provet-report-studio](https://bgonc.github.io/provet-report-studio)**  
-Source: [github.com/bgonc/provet-report-studio](https://github.com/bgonc/provet-report-studio)
+Live at 👉 **[bgonc.codeberg.page/provet-report-studio](https://bgonc.codeberg.page/provet-report-studio)**  
+Source: [github.com/bgonc/provet-report-studio](https://codeberg.org/bgonc/provet-report-studio)
 
 **Stack:** HTML · CSS · Vanilla JavaScript · SheetJS
 
 ---
 
-### 🌐 [Portfolio Website](https://bgonc.github.io)
+### 🌐 [Portfolio Website](https://bgonc.codeberg.page)
 
 Personal site built with React, TypeScript, and Vite. Has a project page and a small blog section.  
 Deployed via GitHub Pages.
 
-→ [bgonc.github.io](https://bgonc.github.io)
+→ [bgonc.codeberg.page](https://bgonc.codeberg.page)
 
 **Stack:** React · TypeScript · Vite
 
 ---
 
-### 🎓 [C Programming Studies](https://github.com/bgonc/C)
+### 🎓 [C Programming Studies](https://codeberg.org/bgonc/C)
 
 Coursework and exercises from my IT studies at UAb, plus some independent practice.  
 Covers the basics: control flow, functions, arrays, pointers, file I/O, sorting, and structs.  
 Nothing fancy — just working through the fundamentals.
 
-→ [github.com/bgonc/C](https://github.com/bgonc/C)
+→ [github.com/bgonc/C](https://codeberg.org/bgonc/C)
 
 ---
 
