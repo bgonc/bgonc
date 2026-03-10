@@ -3,7 +3,7 @@
 IT student and Linux hobbyist based in Helsinki 🇫🇮.  
 I learn by building things — most of what's here is me figuring stuff out as I go.
 
-- 🌱 Studying IT at [UAb](https://www.uab.pt) and working through Linux system administration (RHCSA track)
+- 🌱 Studying IT at [UAb](https://www.uab.pt) and working toward AWS Solutions Architect Associate (AWS SAA)
 - 🔨 I tinker with Python scripts, bash, and C as part of my coursework and self-study
 - 🐧 Daily Arch Linux / Hyprland user — most of my projects come from solving problems on my own setup
 - 🌐 Website: [bgonc.codeberg.page](https://bgonc.codeberg.page)
