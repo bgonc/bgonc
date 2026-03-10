@@ -66,3 +66,9 @@ Source: [Codeberg](https://codeberg.org/bgonc/C) · [GitHub](https://github.com/
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.
