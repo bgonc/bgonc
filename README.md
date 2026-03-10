@@ -1,13 +1,13 @@
 # Hi there 👋 I'm Bruno
 
-IT student and Linux hobbyist based in Helsinki 🇫🇮.  
-I learn by building things — most of what's here is me figuring stuff out as I go.
+IT student and technical support specialist based in Helsinki 🇫🇮.  
+I learn by building practical tools for my own workflow.
 
 - 🌱 Studying IT at [UAb](https://www.uab.pt) and working toward AWS Solutions Architect Associate (AWS SAA)
-- 🔨 I tinker with Python scripts, bash, and C as part of my coursework and self-study
-- 🐧 Daily Arch Linux / Hyprland user — most of my projects come from solving problems on my own setup
+- 🔨 Building small projects with Python, Bash, JavaScript, and C while learning step by step
+- 🐧 Daily Arch Linux / Hyprland user
 - 🌐 Website: [bgonc.codeberg.page](https://bgonc.codeberg.page)
-- 📬 Contact: [bgonc.codeberg.page](https://bgonc.codeberg.page) (contact form on the site)
+- 📬 Contact: [bgonc.codeberg.page](https://bgonc.codeberg.page) (contact form)
 
 ---
 
@@ -15,12 +15,11 @@ I learn by building things — most of what's here is me figuring stuff out as I
 
 ### 🖥️ [System Dashboard](https://codeberg.org/bgonc/system-dashboard)
 
-A PyQt6 desktop dashboard that monitors my Arch Linux system in real time.  
-Shows CPU, RAM, network I/O, battery, systemd service health (system and user scope), kernel alerts, Filen cloud sync status, and pending package updates — in a dark glassmorphism UI.
+A PyQt6 desktop dashboard for my Arch Linux setup. It tracks CPU, RAM, network, battery, systemd service health, cloud sync state, and updates.
 
-Built to scratch a personal itch: I wanted a single-glance panel for my Hyprland setup without running a browser or Electron app.
+Built as a personal utility and learning project.
 
-→ [github.com/bgonc/system-dashboard](https://codeberg.org/bgonc/system-dashboard)
+Source: [Codeberg](https://codeberg.org/bgonc/system-dashboard) · [GitHub](https://github.com/bgonc/system-dashboard)
 
 **Stack:** Python · PyQt6 · systemd · journalctl · psutil
 
@@ -28,11 +27,10 @@ Built to scratch a personal itch: I wanted a single-glance panel for my Hyprland
 
 ### 📊 [Provet Report Studio](https://bgonc.codeberg.page/provet-report-studio)
 
-A browser-based tool for processing Excel and CSV exports from the Provet clinic management system.  
-Built to help a veterinary clinic avoid hours of manual data reformatting — joins, pivots, filters, and summaries all run client-side in the browser, no server involved.
+A browser tool for processing Provet CSV/XLSX exports. It helps reduce repetitive manual formatting work at a veterinary clinic.
 
-Live at 👉 **[bgonc.codeberg.page/provet-report-studio](https://bgonc.codeberg.page/provet-report-studio)**  
-Source: [github.com/bgonc/provet-report-studio](https://codeberg.org/bgonc/provet-report-studio)
+Live: [bgonc.codeberg.page/provet-report-studio](https://bgonc.codeberg.page/provet-report-studio)  
+Source: [Codeberg](https://codeberg.org/bgonc/provet-report-studio) · [GitHub](https://github.com/bgonc/provet-report-studio)
 
 **Stack:** HTML · CSS · Vanilla JavaScript · SheetJS
 
@@ -40,10 +38,10 @@ Source: [github.com/bgonc/provet-report-studio](https://codeberg.org/bgonc/prove
 
 ### 🌐 [Portfolio Website](https://bgonc.codeberg.page)
 
-Personal site built with React, TypeScript, and Vite. Has a project page and a small blog section.  
-Deployed via GitHub Pages.
+Personal site with project highlights and blog posts.  
+Published on Codeberg Pages and mirrored on GitHub Pages.
 
-→ [bgonc.codeberg.page](https://bgonc.codeberg.page)
+Site: [bgonc.codeberg.page](https://bgonc.codeberg.page)
 
 **Stack:** React · TypeScript · Vite
 
@@ -51,11 +49,9 @@ Deployed via GitHub Pages.
 
 ### 🎓 [C Programming Studies](https://codeberg.org/bgonc/C)
 
-Coursework and exercises from my IT studies at UAb, plus some independent practice.  
-Covers the basics: control flow, functions, arrays, pointers, file I/O, sorting, and structs.  
-Nothing fancy — just working through the fundamentals.
+Coursework and exercises from my IT studies at UAb, plus independent practice. Focused on fundamentals such as functions, pointers, arrays, file I/O, and sorting.
 
-→ [github.com/bgonc/C](https://codeberg.org/bgonc/C)
+Source: [Codeberg](https://codeberg.org/bgonc/C) · [GitHub](https://github.com/bgonc/C)
 
 ---
 
