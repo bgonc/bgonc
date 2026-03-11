@@ -1,10 +1,10 @@
 # Hi there 👋 I'm Bruno
 
-IT student and technical support specialist based in Helsinki 🇫🇮.  
-I learn by building practical tools for my own workflow.
+Technical support professional based in Helsinki 🇫🇮.
+I am not a software developer by trade. I build small practical tools while learning and improving step by step.
 
-- 🌱 Studying IT at [UAb](https://www.uab.pt) and working toward AWS Solutions Architect Associate (AWS SAA)
-- 🔨 Building small projects with Python, Bash, JavaScript, and C while learning step by step
+- 🌱 Continuing my IT studies at [UAb](https://www.uab.pt) while preparing for AWS Solutions Architect Associate (AWS SAA)
+- 🔨 Building small projects with Python, Bash, JavaScript, and C as part of my learning path
 - 🐧 Daily Arch Linux / Hyprland user
 - 🌐 Website: [bgonc.codeberg.page](https://bgonc.codeberg.page)
 - 📬 Contact: [bgonc.codeberg.page](https://bgonc.codeberg.page) (contact form)
