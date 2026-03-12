@@ -25,12 +25,12 @@ Source: [Codeberg](https://codeberg.org/bgonc/system-dashboard) · [GitHub](http
 
 ---
 
-### 📊 [Provet Report Studio](https://bgonc.codeberg.page/provet-report-studio)
+### 📊 [Excel Utils](https://bgonc.codeberg.page/excel-utils)
 
-A browser tool for processing Provet CSV/XLSX exports. It helps reduce repetitive manual formatting work at a veterinary clinic.
+A browser tool for processing CSV/XLSX exports. It helps reduce repetitive manual formatting work and build reusable report flows.
 
-Live: [bgonc.codeberg.page/provet-report-studio](https://bgonc.codeberg.page/provet-report-studio)  
-Source: [Codeberg](https://codeberg.org/bgonc/provet-report-studio) · [GitHub](https://github.com/bgonc/provet-report-studio)
+Live: [bgonc.codeberg.page/excel-utils](https://bgonc.codeberg.page/excel-utils)  
+Source: [Codeberg](https://codeberg.org/bgonc/excel-utils) · [GitHub](https://github.com/bgonc/provet-report-studio)
 
 **Stack:** HTML · CSS · Vanilla JavaScript · SheetJS
 
