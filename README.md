@@ -30,7 +30,7 @@ Source: [Codeberg](https://codeberg.org/bgonc/system-dashboard) · [GitHub](http
 A browser tool for processing CSV/XLSX exports. It helps reduce repetitive manual formatting work and build reusable report flows.
 
 Live: [bgonc.codeberg.page/excel-utils](https://bgonc.codeberg.page/excel-utils)  
-Source: [Codeberg](https://codeberg.org/bgonc/excel-utils) · [GitHub](https://github.com/bgonc/provet-report-studio)
+Source: [Codeberg](https://codeberg.org/bgonc/excel-utils) · [GitHub mirror](https://github.com/bgonc/provet-report-studio)
 
 **Stack:** HTML · CSS · Vanilla JavaScript · SheetJS
 
