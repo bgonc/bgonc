@@ -1,6 +1,6 @@
 # Hi there 👋 I'm Bruno
 
-IT student and Linux hobbyist based in Helsinki 🇫🇮.  
+IT and Linux hobbyist based in Helsinki 🇫🇮.  
 I learn by building things — most of what's here is me figuring stuff out as I go.
 
 - 🌱 Studying IT at [UAb](https://www.uab.pt) and working through Linux system administration (RHCSA track)
