@@ -11,6 +11,10 @@ I learn by building things — most of what's here is me figuring stuff out as I
 
 ---
 
+![Activity](heatmap.svg)
+
+---
+
 ## Projects
 
 ### 🖥️ [System Dashboard](https://codeberg.org/bgonc/system-dashboard)
@@ -36,6 +40,20 @@ Live at 👉 **[bgonc.codeberg.page/excel-utils](https://bgonc.codeberg.page/exc
 Source: [codeberg.org/bgonc/excel-utils](https://codeberg.org/bgonc/excel-utils)
 
 **Stack:** HTML · CSS · Vanilla JavaScript · SheetJS  
+**License:** MIT
+
+---
+
+### 🏃 [Polar AI Coach](https://codeberg.org/bgonc/polar-coach)
+
+AI-powered training coach that connects to Polar watch data.
+Readiness scoring, sleep & stress analysis, pace zones, race predictions, interactive HR charts, adaptive training plans, and daily AI coaching with weather awareness.
+
+Built for personal use with a Polar Vantage V3 — runs locally, all data stays on your machine.
+
+→ [codeberg.org/bgonc/polar-coach](https://codeberg.org/bgonc/polar-coach)
+
+**Stack:** Python · Flask · OpenRouter AI · Polar AccessLink API · HTML Canvas
 **License:** MIT
 
 ---
