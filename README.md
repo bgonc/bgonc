@@ -7,8 +7,10 @@ I like Linux, automation, and open-source tools.
 
 ## What I'm working on
 
+- **[Polar AI Coach](https://github.com/bgonc/polar-coach)** — AI-powered training coach using Polar watch data. Readiness scoring, sleep & stress analysis, pace zones, race predictions, and daily AI coaching.
 - **[System Dashboard](https://github.com/bgonc/system-dashboard)** — PyQt6 desktop dashboard for Arch Linux / Wayland. Monitors CPU, RAM, services, updates, and cloud sync in one panel.
 - **[Excel Utils](https://github.com/bgonc/excel-utils)** — Browser-based spreadsheet processing tool. Filters, merges, and reporting — runs fully client-side.
+- **[Portfolio Website](https://bgonc.codeberg.page)** — Personal site built with React, TypeScript, and Vite. Project showcase and blog.
 - **[C](https://github.com/bgonc/C)** — Coursework and exercises from my Computer Engineering studies. Control flow, pointers, file I/O, sorting, structs.
 
 ## Currently learning
