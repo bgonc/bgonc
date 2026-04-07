@@ -11,10 +11,6 @@ I learn by building things — most of what's here is me figuring stuff out as I
 
 ---
 
-![Activity](heatmap.svg)
-
----
-
 ## Projects
 
 ### 🖥️ [System Dashboard](https://codeberg.org/bgonc/system-dashboard)
