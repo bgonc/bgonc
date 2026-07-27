@@ -40,12 +40,12 @@ Source: [github.com/bgonc/excel-utils](https://github.com/bgonc/excel-utils)
 
 ---
 
-### 🏃 [Polar AI Coach](https://github.com/bgonc/polar-coach)
+### 🏃 [Polar AI Coach](https://github.com/bgonc/polar-coach) — Paused
 
-AI-powered training coach that connects to Polar watch data.
-Readiness scoring, sleep & stress analysis, pace zones, race predictions, interactive HR charts, adaptive training plans, and daily AI coaching with weather awareness.
+An AI-powered training-coach experiment that connects to Polar watch data.
+It includes readiness scoring, sleep and stress analysis, pace zones, race predictions, interactive HR charts, adaptive training plans, and daily coaching.
 
-Built for personal use with a Polar Vantage V3 — runs locally, all data stays on your machine.
+The project is currently paused; its local background service is disabled.
 
 → [github.com/bgonc/polar-coach](https://github.com/bgonc/polar-coach)
 
